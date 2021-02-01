@@ -138,7 +138,7 @@ def main():
     print('creating model...')
     #state = torch.load(args.model_path, map_location='cpu')
     #args.num_classes = state['num_classes']
-    args.do_bottleneck_head = True
+    args.do_bottleneck_head = False
     model = create_model(args).cuda()
     
     ema = EMA(model, 0.999)
