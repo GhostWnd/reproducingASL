@@ -5,7 +5,7 @@ from collections import OrderedDict
 from src.models.tresnet.layers.anti_aliasing import AntiAliasDownsampleLayer
 from .layers.avg_pool import FastAvgPool2d
 from .layers.general_layers import SEModule, SpaceToDepthModule
-#from inplace_abn import InPlaceABN
+from inplace_abn import InPlaceABN
 
 
 # from inplace_abn import ABN
@@ -31,19 +31,20 @@ def conv2d(ni, nf, stride):
         nn.ReLU(inplace=True)
     )
 
-'''
+
 def conv2d_ABN(ni, nf, stride, activation="leaky_relu", kernel_size=3, activation_param=1e-2, groups=1):
     return nn.Sequential(
         nn.Conv2d(ni, nf, kernel_size=kernel_size, stride=stride, padding=kernel_size // 2, groups=groups,
                   bias=False),
         InPlaceABN(num_features=nf, activation=activation, activation_param=activation_param)
-    )'''
+    )
+'''
 def conv2d_ABN(ni, nf, stride, activation="leaky_relu", kernel_size=3, activation_param=1e-2, groups=1):
     return nn.Sequential(
         nn.Conv2d(ni, nf, kernel_size=3, stride=stride, padding=1, bias=False),
         nn.BatchNorm2d(nf),
         nn.ReLU(inplace=True)
-    )
+    )'''
 
 class BasicBlock(Module):
     expansion = 1
