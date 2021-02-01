@@ -166,10 +166,9 @@ def main():
                                 instances_path_val,
                                 transforms.Compose([
                                     transforms.Resize((args.image_size, args.image_size)),
-                                    RandAugment(),
+                                    #RandAugment(),
                                     transforms.ToTensor(),
                                     normalize,
-                                    Cutout(n_holes = 1, length = 16)
                                 ]))
     train_dataset = CocoDetection(data_path_train,
                                 instances_path_train,
@@ -178,6 +177,7 @@ def main():
                                     #RandAugment(),
                                     transforms.ToTensor(),
                                     normalize,
+                                    Cutout(n_holes = 1, length = 16)
                                 ]))
 
     print("len(val_dataset)): ", len(val_dataset))
