@@ -120,6 +120,7 @@ class CocoDetection(datasets.coco.CocoDetection):
         target = output
 
         path = coco.loadImgs(img_id)[0]['file_name']
+        path = path.split('_')[-1] #remove 'MSCOCO_2014'
         img = Image.open(os.path.join(self.root, path)).convert('RGB')
         if self.transform is not None:
             img = self.transform(img)
