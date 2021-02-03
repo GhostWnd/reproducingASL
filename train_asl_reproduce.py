@@ -28,7 +28,7 @@ from PIL import ImageDraw
 from torch.cuda.amp import GradScaler, autocast
 
 parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
-parser.add_argument('data', metavar='DIR', help='path to dataset', default='/home/s2118392/cw3/MSCOCO_2014/')
+parser.add_argument('data', metavar='DIR', help='path to dataset')
 parser.add_argument('--lr', default=2e-4, type=float)
 parser.add_argument('--model-name', default='tresnet_m')
 parser.add_argument('--model-path', default='./tresnet_m.pth', type=str)
