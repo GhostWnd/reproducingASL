@@ -103,7 +103,7 @@ def main():
     
     ema = ModelEma(model, 0.9997)
     ema.update(model)
-    validate_multi(val_loader, model, ema, args)
+    validate_multi(val_loader, model, ema)
 
 def validate_multi(val_loader, model, ema_model):
     print("starting validation")
