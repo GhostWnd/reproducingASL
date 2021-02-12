@@ -261,6 +261,9 @@ def train_multi_label_coco(model, train_loader, val_loader, lr=2e-4, gamma_neg=4
         try:
             torch.save(model.state_dict(), os.path.join(
                 'models/', 'model-{}-{}.ckpt'.format(epoch + 1, i + 1)))
+            #save ema module (edited 21/02/12)
+            torch.save(ema.module.state_dict(), os.path.join(
+                'models/', 'ema_model-{}-{}.ckpt'.format(epoch + 1, i + 1)))
         except:
             pass
         # modelName = 'models/' + 'decoder-{}-{}.ckpt'.format(epoch+1, i+1)
@@ -272,6 +275,9 @@ def train_multi_label_coco(model, train_loader, val_loader, lr=2e-4, gamma_neg=4
             try:
                 torch.save(model.state_dict(), os.path.join(
                     'models/', 'model-highest.ckpt'))
+                #save ema module (edited 21/02/12)
+                torch.save(ema.module.state_dict(), os.path.join(
+                'models/', 'ema_model-{}-{}.ckpt'.format(epoch + 1, i + 1)))
             except:
                 pass
         print('current_mAP = {:.2f}, highest_mAP = {:.2f}\n'.format(mAP_score, highest_mAP))
